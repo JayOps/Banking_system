@@ -1,0 +1,476 @@
+import java.util.ArrayList;	//New import
+import java.text.NumberFormat;
+import java.util.*;
+import java.io.*;
+
+
+public class Main
+{
+  public static void main (String args[])
+  {
+    NumberFormat money = NumberFormat.getCurrencyInstance ();
+
+
+    Scanner input = new Scanner (System.in);
+
+      ArrayList < String > myFirstName = new ArrayList < String > ();
+      ArrayList < String > myLastName = new ArrayList < String > ();
+      ArrayList < Integer > pinNum = new ArrayList < Integer > ();
+      ArrayList < String > mySexLife = new ArrayList < String > ();
+      ArrayList < Double > myDeposit = new ArrayList < Double > ();
+
+
+    String name, ch;
+    int gr, rec;
+    do
+      {
+	System.out.print
+	  ("(A)dd,(R)emove,(D)isplay,Display(O)ne,(E)dit,(S)earch,Sa(V)e,(L)oad,(Q)uit: ");
+	ch = input.next ();
+
+	if (ch.equals ("Q") || ch.equals ("q"))
+	  {
+	    break;
+	  }
+	if (ch.equalsIgnoreCase ("d"))
+	  {
+	    display (myFirstName, myLastName, pinNum, mySexLife, myDeposit);
+
+	  }
+	if (ch.equalsIgnoreCase ("a"))
+	  {
+	    add (myFirstName, myLastName, pinNum, mySexLife, myDeposit);
+
+	  }
+	if (ch.equalsIgnoreCase ("r"))
+	  {
+	    remove (myFirstName, myLastName, pinNum, mySexLife, myDeposit);
+
+	  }
+	if (ch.equalsIgnoreCase ("e"))
+	  {
+	    edit (myFirstName, myLastName, pinNum, mySexLife, myDeposit);
+
+	  }
+	if (ch.equalsIgnoreCase ("o"))
+	  {
+	    disOne (myFirstName, myLastName, pinNum, mySexLife, myDeposit);
+
+	  }
+	if (ch.equalsIgnoreCase ("s"))
+	  {
+	    search (myFirstName, myLastName, pinNum, mySexLife, myDeposit);
+
+	  }
+	if (ch.equalsIgnoreCase ("v"))
+	  {
+	    save (myFirstName, myLastName, pinNum, mySexLife, myDeposit);
+
+	  }
+	 if (ch.equalsIgnoreCase ("l"))
+	  {
+	    load (myFirstName, myLastName, pinNum, mySexLife, myDeposit);
+
+	  }
+      }
+    while (true);
+
+    System.out.println ("Have a nice life in hell :)");
+
+  }
+
+  public static void display (ArrayList < String > myFirstName,
+			      ArrayList < String > myLastName,
+			      ArrayList < Integer > pinNum,
+			      ArrayList < String > mySexLife,
+			      ArrayList < Double > myDeposit)
+  {
+
+    NumberFormat money = NumberFormat.getCurrencyInstance ();
+
+
+
+
+    for (int i = 0; i < myLastName.size (); i++)
+      {
+	System.out.println (myFirstName.get (i) + "\t " + myLastName.get (i) + "\t" + pinNum.get (i) + "\t" + mySexLife.get (i) + "\t" + money.format (myDeposit.get (i)));	//Outputs Data
+      }
+  }
+
+  public static void add (ArrayList < String > myFirstName,
+			  ArrayList < String > myLastName,
+			  ArrayList < Integer > pinNum,
+			  ArrayList < String > mySexLife,
+			  ArrayList < Double > myDeposit)
+  {
+
+    NumberFormat money = NumberFormat.getCurrencyInstance ();
+
+
+    Scanner input = new Scanner (System.in);
+
+
+
+    String firstName;
+    String lastName;
+    int pinNumber;
+    String sexLife;
+    Double depo;
+    System.out.print ("Enter first name: ");
+    firstName = input.next ();
+
+    System.out.print ("Enter last name: ");
+    lastName = input.next ();
+
+    System.out.print ("Enter pin number: ");
+    pinNumber = input.nextInt ();
+
+    System.out.print ("Choose sex (m/f): ");
+    sexLife = input.next ();
+
+    System.out.print ("Enter deposit: ");
+    depo = input.nextDouble ();
+
+
+
+    int z = myLastName.size ();	//  Just like  .length()
+    myFirstName.add (z, firstName);	// Adds a space and a value in the array myNames
+    myLastName.add (z, lastName);	// Adds a space and a value in the array myGrades
+    pinNum.add (z, pinNumber);
+    mySexLife.add (z, sexLife);
+    myDeposit.add (z, depo);
+
+  }
+
+  public static void remove (ArrayList < String > myFirstName,
+			     ArrayList < String > myLastName,
+			     ArrayList < Integer > pinNum,
+			     ArrayList < String > mySexLife,
+			     ArrayList < Double > myDeposit)
+  {
+
+    NumberFormat money = NumberFormat.getCurrencyInstance ();
+
+
+    Scanner input = new Scanner (System.in);
+
+    int rec;
+    for (int i = 0; i < myLastName.size (); i++)
+      {
+	System.out.println ((i + 1) + "\t " + myFirstName.get (i) + "\t " +
+			    myLastName.get (i) + "\t" + pinNum.get (i) +
+			    "\t" + mySexLife.get (i) + "\t" +
+			    money.format (myDeposit.get (i)));
+
+      }
+
+    System.out.print ("Enter selection to be removed: ");
+    rec = input.nextInt ();
+    rec--;
+
+    myFirstName.remove (rec);
+    myLastName.remove (rec);
+    pinNum.remove (rec);
+    mySexLife.remove (rec);
+    myDeposit.remove (rec);
+
+
+
+  }
+
+  public static void disOne (ArrayList < String > myFirstName,
+			     ArrayList < String > myLastName,
+			     ArrayList < Integer > pinNum,
+			     ArrayList < String > mySexLife,
+			     ArrayList < Double > myDeposit)
+  {
+
+    NumberFormat money = NumberFormat.getCurrencyInstance ();
+
+
+    Scanner input = new Scanner (System.in);
+    int rec;
+    for (int i = 0; i < myLastName.size (); i++)
+      {
+	System.out.println ((i + 1) + "\t " + myFirstName.get (i) + "\t " +
+			    myLastName.get (i) + "\t" + pinNum.get (i) +
+			    "\t" + mySexLife.get (i) + "\t" +
+			    money.format (myDeposit.get (i)));
+      }
+    System.out.print ("Enter selection to be displayed: ");
+    rec = input.nextInt ();
+    rec--;
+
+    System.out.println (myFirstName.get (rec) + "\t " +
+			myLastName.get (rec) + "\t" + pinNum.get (rec) +
+			"\t" + mySexLife.get (rec) + "\t" +
+			myDeposit.get (rec));
+  }
+
+  public static void edit (ArrayList < String > myFirstName,
+			   ArrayList < String > myLastName,
+			   ArrayList < Integer > pinNum,
+			   ArrayList < String > mySexLife,
+			   ArrayList < Double > myDeposit)
+  {
+
+    NumberFormat money = NumberFormat.getCurrencyInstance ();
+
+
+    Scanner input = new Scanner (System.in);
+    int rec;
+    String firstName;
+    String lastName;
+    int pinNumber;
+    String sexLife;
+    Double depo;
+    String butWhole;
+    for (int i = 0; i < myLastName.size (); i++)
+      {
+	System.out.println ((i + 1) + "\t " + myFirstName.get (i) + "\t " +
+			    myLastName.get (i) + "\t" + pinNum.get (i) +
+			    "\t" + mySexLife.get (i) + "\t" +
+			    money.format (myDeposit.get (i)));
+      }
+    System.out.print ("Enter selection to be edited: ");
+    rec = input.nextInt ();
+    rec--;
+
+    System.out.print
+      ("What field would you like to destroy and alter; (f)irst name, (l)ast name, (p)in number, (s)ex life, or (d)eposit:  ");
+    butWhole = input.next ();
+    if (butWhole.equalsIgnoreCase ("f"))
+      {
+	System.out.println ("Current record is " + myFirstName.get (rec));
+	System.out.print ("Enter first name to change: ");
+	firstName = input.next ();
+	myFirstName.set (rec, firstName);
+      }
+    if (butWhole.equalsIgnoreCase ("l"))
+      {
+	System.out.println ("Current record is " + myLastName.get (rec));
+	System.out.print ("Enter last name to change: ");
+	lastName = input.next ();
+	myLastName.set (rec, lastName);
+      }
+    if (butWhole.equalsIgnoreCase ("p"))
+      {
+	System.out.println ("Current record is " + pinNum.get (rec));
+	System.out.print ("Enter pin number to change: ");
+	pinNumber = input.nextInt ();
+	pinNum.set (rec, pinNumber);
+      }
+    if (butWhole.equalsIgnoreCase ("s"))
+      {
+	System.out.println ("Current record is " + mySexLife.get (rec));
+	System.out.print ("Enter sex life to change: ");
+	sexLife = input.next ();
+	mySexLife.set (rec, sexLife);
+      }
+    if (butWhole.equalsIgnoreCase ("d"))
+      {
+	System.out.println ("Current record is " + myDeposit.get (rec));
+	System.out.print ("Enter deposit to change: ");
+	depo = input.nextDouble ();
+	myDeposit.set (rec, depo);
+      }
+  }
+
+
+
+  public static void search (ArrayList < String > myFirstName,
+			     ArrayList < String > myLastName,
+			     ArrayList < Integer > pinNum,
+			     ArrayList < String > mySexLife,
+			     ArrayList < Double > myDeposit)
+  {
+
+    NumberFormat money = NumberFormat.getCurrencyInstance ();
+
+
+
+    Scanner input = new Scanner (System.in);
+    String mainHooker, firstName, lastName, sexLife;
+    int pinNumber;
+    Double depo;
+
+    System.out.
+      print
+      ("What would you like to search by (f)irst name, (l)ast name, (p)in number, (s)ex life, or (d)eposit: ");
+    mainHooker = input.next ();
+
+    if (mainHooker.equalsIgnoreCase ("f"))
+      {
+
+	System.out.print ("Enter first name to search for: ");
+	firstName = input.next ();
+
+	for (int i = 0; i < myLastName.size (); i++)
+	  {
+	    if (firstName.equals (myFirstName.get (i)))
+	      System.out.println (myFirstName.get (i) + "\t " +
+				  myLastName.get (i) + "\t" +
+				  pinNum.get (i) + "\t" +
+				  mySexLife.get (i) + "\t" +
+				  money.format (myDeposit.get (i)));
+	  }
+      }
+
+    if (mainHooker.equalsIgnoreCase ("l"))
+      {
+
+	System.out.print ("Enter last name to search for: ");
+	lastName = input.next ();
+
+	for (int i = 0; i < myLastName.size (); i++)
+	  {
+	    if (lastName.equals (myLastName.get (i)))
+	      System.out.println (myFirstName.get (i) + "\t " +
+				  myLastName.get (i) + "\t" +
+				  pinNum.get (i) + "\t" +
+				  mySexLife.get (i) + "\t" +
+				  money.format (myDeposit.get (i)));
+	  }
+      }
+
+    if (mainHooker.equalsIgnoreCase ("p"))
+      {
+
+	System.out.print ("Enter pin number to search for: ");
+	pinNumber = input.nextInt ();
+
+	for (int i = 0; i < myLastName.size (); i++)
+	  {
+	    if (pinNumber == (pinNum.get (i)))
+	      System.out.println (myFirstName.get (i) + "\t " +
+				  myLastName.get (i) + "\t" +
+				  pinNum.get (i) + "\t" +
+				  mySexLife.get (i) + "\t" +
+				  money.format (myDeposit.get (i)));
+	  }
+      }
+
+    if (mainHooker.equalsIgnoreCase ("s"))
+      {
+
+	System.out.print ("Enter sex to search for: ");
+	sexLife = input.next ();
+
+	for (int i = 0; i < myLastName.size (); i++)
+	  {
+	    if (sexLife.equals (mySexLife.get (i)))
+	      System.out.println (myFirstName.get (i) + "\t " +
+				  myLastName.get (i) + "\t" +
+				  pinNum.get (i) + "\t" +
+				  mySexLife.get (i) + "\t" +
+				  money.format (myDeposit.get (i)));
+	  }
+      }
+
+    if (mainHooker.equalsIgnoreCase ("d"))
+      {
+
+	System.out.print ("Enter deposit to search for: ");
+	depo = input.nextDouble ();
+
+	for (int i = 0; i < myLastName.size (); i++)
+	  {
+	    if (depo == (myDeposit.get (i)))
+	      System.out.println (myFirstName.get (i) + "\t " +
+				  myLastName.get (i) + "\t" +
+				  pinNum.get (i) + "\t" +
+				  mySexLife.get (i) + "\t" +
+				  money.format (myDeposit.get (i)));
+
+	  }
+      }
+  }
+
+
+
+  public static void save (ArrayList < String > myFirstName,
+			   ArrayList < String > myLastName,
+			   ArrayList < Integer > pinNum,
+			   ArrayList < String > mySexLife,
+			   ArrayList < Double > myDeposit)
+  {
+
+    NumberFormat money = NumberFormat.getCurrencyInstance ();
+
+
+    File textFile = new File ("myFile.txt");
+    FileWriter out;
+    BufferedWriter writeFile;
+
+    try
+    {
+      out = new FileWriter (textFile);
+      writeFile = new BufferedWriter (out);
+
+      for (int i = 0; i < myLastName.size (); i++)
+	{
+
+	  writeFile.write (myFirstName.get (i) + "\t");
+	  writeFile.write (myLastName.get (i) + "\t");
+	  writeFile.write (String.valueOf (pinNum.get (i)) + "\t");
+	  writeFile.write (mySexLife.get (i) + "\t");
+	  writeFile.write (String.valueOf ( myDeposit.get (i)) +
+			   "\t");
+	  writeFile.newLine ();
+	}
+      writeFile.close ();
+      out.close ();
+    } catch (IOException e)
+    {
+      System.out.println ("Houston we got a problem!");
+    }
+
+    System.out.println ("File: SAVED ");
+    System.out.println ();
+
+  }
+
+
+
+
+
+ public static void load (ArrayList < String > myFirstName,
+			   ArrayList < String > myLastName,
+			   ArrayList < Integer > pinNum,
+			   ArrayList < String > mySexLife,
+			   ArrayList < Double > myDeposit)
+  {
+    File textFile = new File ("myFile.txt");
+    FileReader in;
+    String stuff;
+    BufferedReader readFile;
+    try
+    {
+      in = new FileReader (textFile);
+      readFile = new BufferedReader (in);
+      int z = 0;
+      while ((stuff = readFile.readLine ()) != null)
+	{
+	  String data[] = stuff.split ("\t");
+	  myFirstName.add (z, data[0]);
+	  myLastName.add (z, data[1]);
+	  pinNum.add (z, Integer.parseInt (data[2]));
+	  mySexLife.add (z, data[3]);
+	  myDeposit.add (z, Double.parseDouble (data[4]));
+	  z++;
+	}
+      readFile.close ();
+      in.close ();
+    }
+    catch (FileNotFoundException e)
+    {
+      System.out.println ("Not exist");
+    }
+    catch (IOException e)
+    {
+      System.out.println ("Problem accessing file");
+    }
+  }
+  
+}
+
